@@ -37,7 +37,7 @@ Gradle is a build and dependency management system.
 
 # Gradle
 - Fast
-![Image-Absolute](images/mvn-vs-gradle.png)
+![mvn-gradle](images/mvn-vs-gradle.png)
 
 @fa[arrow-down]
 
@@ -87,3 +87,22 @@ Run the migrations file
 flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:databases/migrations clean migrate
 ```
 ---
+# Architecture
+
+[Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
+
++++
+![Image-Absolute](images/packages-current.png)
+- Hard to read
+- Hard to mantain
+- Hard to scale
+- Unclear domain
+- Potential Circular dependencies
+
+
++++
+![Image-Absolute](images/packages-refactored.png)
+- Clear naming
+- Clear domain
+- Easy to scale
+- Easy to introduce new people
