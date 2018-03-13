@@ -1,0 +1,17 @@
+apply plugin: "java"
+
+jar {
+    manifest {
+        attributes(
+            "Main-Class": "com.stubhub.Hello"
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+}
