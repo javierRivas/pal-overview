@@ -104,4 +104,4 @@ Clear naming
 Clear domain
 Easy to scale
 Easy to introduce new people
-<span style="float=left">![Image-Absolute](images/packages-refactored.png)</span>
+<span style="align:left">![Image-Absolute](images/packages-refactored.png)</span>
