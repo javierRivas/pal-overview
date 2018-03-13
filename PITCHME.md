@@ -87,3 +87,21 @@ Run the migrations file
 flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:databases/migrations clean migrate
 ```
 ---
+# Architecture
+
+[Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
+
++++
+Hard to read
+Hard to mantain
+Hard to scale
+Unclear domain
+Potential Circular dependencies
+<span style="float=left">![Image-Absolute](images/packages-current.png)</span>
+
++++
+Clear naming
+Clear domain
+Easy to scale
+Easy to introduce new people
+<span style="float=left">![Image-Absolute](images/packages-refactored.png)</span>
