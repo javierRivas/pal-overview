@@ -1,5 +1,7 @@
+# Platform acceleration labs overview
+---
 @title[Introduction]
-# Platform acceleration labs
+## Introduction
 <span style="font-size:0.6em">Experience best practices for re-platforming and modernizing apps in a hands-on setting.</span>
 <span style="font-size:0.6em">Best practices on building and deploying software according to todays cloud standards.</span>
 <span style="font-size:0.6em">Understanding the relevant concepts in the cloud world.</span>
@@ -9,7 +11,8 @@
 - Version Control: git
 - Build system: Gradle
 - Language flavour: Kotlin
-</br>@fa[arrow-down]
+
+@fa[arrow-down]
 +++
 #### Gradle
 Gradle is a build and dependency management system.
