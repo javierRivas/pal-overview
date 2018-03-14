@@ -156,7 +156,7 @@ compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
 ```
 ---
 ### Replatforming vs Modernization
-Adapt the application to function correctly in the cloud
+Adapt the application to function correctly in the cloud, for example:
 - Remove reads/write to disk
 - Remove instance specific state
 
