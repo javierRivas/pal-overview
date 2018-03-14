@@ -72,7 +72,6 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 ## Architecture
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
 </br>@fa[arrow-down]
-## Architecture
 +++?image=images/packages-current.png&size=contain
 +++
 ## Architecture
