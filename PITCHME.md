@@ -133,7 +133,7 @@ Usually microservices need to connect to different systems (services, dbs, queue
 Sometimes the connection to those services is not possible.
 +++
 ### Circuit Breaker
-The Circuit breaker watches for failing calls to the service. If failures reach a certain threshold, it “opens” the circuit and automatically redirects calls to the specified fallback mechanism
+<span style="font-size:0.8em">The Circuit breaker watches for failing calls to the service. If failures reach a certain threshold, it “opens” the circuit and automatically redirects calls to the specified fallback mechanism</span>
 ![Circuit-Breaker](images/circuit-breaker.png)
 +++
 ### Circuit Breaker
@@ -142,15 +142,15 @@ Circuit Breaker Dashboard is based on Hystrix, Netflix’s latency and fault-tol
 @[14,23] (Hystrix annotations)
 ---
 ### Security
-Recommended way for securing service-to-service communications is OAuth.
+Recommended way for securing service-to-service communications is OAuth.</br>
 PCF provides an OAuth server that the applications can user for receiving/validating tokens.
 +++
 ### Security
 ![oauth](images/oauth_auth.png)
 ---
 ### Config Server
-PCF provides a config server based on a repository.
-Every push to that repository generates a change in the config server.
+PCF provides a config server, based on a given repository.</br>
+Every push to that repository generates a change in the config server.</br>
 Spring cloud config connects the application with the config server.
 +++
 ### Config Server
@@ -158,14 +158,15 @@ Spring cloud config connects the application with the config server.
 +++
 ### Config Server
 Adding config server to the application:
-```compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
+```groovy
+compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
 ```
 ---
 ### Replatforming vs Modernization
-Adapt the application to have function correctly in the cloud
+Adapt the application to function correctly in the cloud
 - Remove reads/write to disk
 - Remove instance specific state
 +++
-Once in the cloud, bring technology stack up to database
+Once in the cloud, bring the technology stack up to date
 - microservices, security, migrations, etc...
 ---
