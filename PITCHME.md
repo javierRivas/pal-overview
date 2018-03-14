@@ -111,7 +111,6 @@ Service discovery pattern where the application will request the Service Registr
 ### Service Discovery
 Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Service Discovery server and client.
 </br>@fa[arrow-down]
-### Service Discovery
 +++?code=src/build-service-discovery.gradle&title=Gradle build file
 @[6,13] (Adding Eureka Service Registry)
 ### Service Discovery
