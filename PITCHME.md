@@ -112,6 +112,8 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 
 [Open source Cloud native platform](https://docs.google.com/presentation/d/1LAapkVrJYJS4Mx5FwawAxHIOmWHH_hbihVpYFaNeaoo/)
 
+---
+
 ## Managing the Application's connections
 Applications often need to get/receive data from other services.
 An app needs to be able to answer the following questions:
