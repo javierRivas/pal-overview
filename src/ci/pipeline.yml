@@ -1,0 +1,47 @@
+resources:
+- name: demo-server
+  type: git
+  source:
+    uri: {{github-repository}}
+    branch: master
+    private_key: {{github-private-key}}
+
+- name: demo-server-artifacts
+  type: s3
+  source:
+    bucket: {{aws-bucket}}
+    regexp: releases/demo-server-(.*).jar
+    access_key_id: {{aws-access-key-id}}
+    secret_access_key: {{aws-secret-access-key}}
+
+- name: deployment
+  type: cf
+  source:
+    api: {{cf-api-url}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-org}}
+    space: review
+jobs:
+- name: build
+  plan:
+  - get: demo-server
+    trigger: true
+  - task: build and test
+    file: demo-server/ci/build.yml
+  - put: demo-server-artifacts
+    params:
+      file: build-output/demo-server-*.jar
+
+- name: deploy-review
+  plan:
+  - get: demo-server
+  - get: demo-server-artifacts
+    trigger: true
+    passed: [build]
+  - put: deployment
+    params:
+      manifest: demo-server/manifest.yml
+      path: demo-server-artifacts/demo-server-*.jar
+      environment_variables:
+        WELCOME_MESSAGE: "Hello from the other side"

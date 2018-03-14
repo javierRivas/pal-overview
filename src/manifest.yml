@@ -1,0 +1,14 @@
+applications:
+- name: my-app
+  path: ./applications/server/build/libs/server.jar
+  host: allocations-pal-INITIALS
+  memory: 1G
+  instances: 1
+  env:
+    GRANT_TYPE: client_credentials
+  services:
+  - tracker-allocations-database
+  - tracker-service-registry
+  - tracker-circuit-breaker-dashboard
+  - tracker-sso
+  - tracker-config-server

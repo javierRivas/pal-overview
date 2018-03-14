@@ -81,9 +81,8 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 ## Architecture
 
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
-
 +++
-![Image-Absolute](images/packages-current.png)
+---?image=images/packages-current.png
 +++
 - Hard to read
 - Hard to mantain
@@ -170,3 +169,25 @@ Adapt the application to function correctly in the cloud
 Once in the cloud, bring the technology stack up to date
 - microservices, security, migrations, etc...
 ---
+## Build and Deploy
+Use a Manifest file to describe the application's context and dependencies.
+```
+cf create-service ...
+```
++++?code=src/manifest.yml&lang=yaml
+```
+cf push
+```
++++
+### Using CI
+- Use Concourse as preferred CI system for microservices architecture.
+- Define flows composed by tasks, resources and jobs
++++
++++?code=src/ci/build.yml&source=yaml
++++
++++?code=src/ci/pipeline.yml&source=yaml
++++
+Push the pipeline config to the CI system
+```
+fly -t demo-server set-pipeline -p demo-server --load-vars-from ci/variables.yml -c ci/pipeline.yml
+```
