@@ -1,13 +1,11 @@
 @title[Introduction]
 # Platform acceleration labs
-
 <span style="font-size:0.6em">Experience best practices for re-platforming and modernizing apps in a hands-on setting.</span>
 <span style="font-size:0.6em">Best practices on building and deploying software according to todays cloud standards.</span>
 <span style="font-size:0.6em">Understanding the relevant concepts in the cloud world.</span>
 ---
 @title[tools]
 ### Recommended tools to build software in the Java ecosystem
-
 - Version Control: git
 - Build system: Gradle
 - Language flavour: Kotlin
@@ -15,7 +13,6 @@
 @fa[arrow-down]
 +++
 #### Gradle
-
 Gradle is a build and dependency management system.
 
 - Easy to understand
@@ -37,7 +34,6 @@ Gradle is a build and dependency management system.
 @fa[arrow-down]
 +++
 #### Kotlin
-
 - "New" language developed by JetBrains.
 - Source files compile to Java.
 - Perfect integration with Java project.
@@ -48,7 +44,6 @@ Gradle is a build and dependency management system.
 +++?code=src/kotlin/Order.kt&lang=kotlin&title=Order class
 ---
 ## Development
-
 [12 Factor application](https://www.12factor.net): Set of suggestions for a piece of software intended to work as Saas.
 </br>
 Well documented, based on experience.
@@ -57,30 +52,25 @@ Well documented, based on experience.
 
 +++
 ## Development
-
 The Java Framework of choice is Spring Boot.
  - Autoconfiguration
+ @fa[arrow-down]
 +++?code=src/java/SampleApplication.java&lang=java&title=Application Class
 @[3] Spring Application annotation
-
 +++?code=src/java/controller/SampleController.java
 @[3,12,17] (Controller annotations)
-
 +++
 ## Development
-
 Database "migrations" using [Flyway](https://www.flyway.com)
-
 +++?code=src/database/V1__create_table_sample.sql&lang=sql&title=Migrations file.
-
 Run the migrations file
 ```
 flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:databases/migrations clean migrate
 ```
 ---
 ## Architecture
-
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
+@fa[arrow-down]
 +++?image=images/packages-current.png&size=contain
 +++
 - Hard to read
@@ -94,10 +84,8 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 - Clear domain
 - Easy to scale
 - Easy to introduce new people
-
 ---
 ## Pivotal Cloud Foundry
-
 [Open source Cloud native platform](https://docs.google.com/presentation/d/1LAapkVrJYJS4Mx5FwawAxHIOmWHH_hbihVpYFaNeaoo/)
 ---
 ## Managing the Application's connections
@@ -105,7 +93,7 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 <span style="font-size:0.8em">An app needs to be able to answer the following questions:</span>
 - <span style="font-size:0.6em">What are the hosts I need to connect to?</span>
 - <span style="font-size:0.6em">How do other services connect with me?</span>
-- <span style="font-size:0.6em">What happens if the server I need data form is down?</span>
+- <span style="font-size:0.6em">What happens if the service I need data from is down?</span>
 - <span style="font-size:0.6em">How do I authenticate my requests?</span>
 - <span style="font-size:0.6em">Where is the app config?</span>
 ---
@@ -126,8 +114,9 @@ Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Servi
 @[3,15] (Eureka annotations)
 ---
 ### Circuit Breaker
-Usually microservices need to connect to different systems (services, dbs, queues...)
+Usually microservices need to connect to different systems (services, DBs, queues...)
 Sometimes the connection to those services is not possible.
+@fa[arrow-down]
 +++
 ### Circuit Breaker
 <span style="font-size:0.8em">The Circuit breaker watches for failing calls to the service. If failures reach a certain threshold, it “opens” the circuit and automatically redirects calls to the specified fallback mechanism</span>
@@ -135,6 +124,7 @@ Sometimes the connection to those services is not possible.
 +++
 ### Circuit Breaker
 Circuit Breaker Dashboard is based on Hystrix, Netflix’s latency and fault-tolerance library.
+@fa[arrow-down]
 +++?code=src/java/CircuitBreakerDemo.java&lang=java
 @[14,23] (Hystrix annotations)
 ---
@@ -143,7 +133,7 @@ Recommended way for securing service-to-service communications is OAuth.</br>
 PCF provides an OAuth server that the applications can user for receiving/validating tokens.
 +++
 ### Security
-![oauth](images/oauth_auth.png)
+![Oauth](images/oauth_auth.png)
 ---
 ### Config Server
 PCF provides a config server, based on a given repository.</br>
@@ -151,7 +141,7 @@ Every push to that repository generates a change in the config server.</br>
 Spring cloud config connects the application with the config server.
 +++
 ### Config Server
-![config-server](images/config-server.png)
+![Config-Server](images/config-server.png)
 +++
 ### Config Server
 Adding config server to the application:
@@ -165,7 +155,7 @@ Adapt the application to function correctly in the cloud
 - Remove instance specific state
 +++
 Once in the cloud, bring the technology stack up to date
-- microservices, security, migrations, etc...
+- DDD, microservices, security, migrations, etc...
 ---
 ## Build and Deploy
 Use a Manifest file to describe the application's context and dependencies.
@@ -178,14 +168,15 @@ cf push
 ```
 +++
 ### Using CI
-- Use Concourse as preferred CI system for microservices architecture.
+- Use [Concourse](http://concourse-ci.org) as preferred CI system for microservices architecture.
 - Define flows composed by tasks, resources and jobs
-+++
 +++?code=src/ci/build.yml&source=yaml
-+++
 +++?code=src/ci/pipeline.yml&source=yaml
 +++
 Push the pipeline config to the CI system
 ```
 fly -t demo-server set-pipeline -p demo-server --load-vars-from ci/variables.yml -c ci/pipeline.yml
 ```
++++
+Enjoy your creation :-)
+![Concourse](images/concourse.png)
