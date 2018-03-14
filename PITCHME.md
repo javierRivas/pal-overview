@@ -104,13 +104,13 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 [Open source Cloud native platform](https://docs.google.com/presentation/d/1LAapkVrJYJS4Mx5FwawAxHIOmWHH_hbihVpYFaNeaoo/)
 ---
 ## Managing the Application's connections
-Applications often need to get/receive data from other services.</br>
-An app needs to be able to answer the following questions:
+<span style="font-size:0.8em">Applications often need to get/receive data from other services.</span></br>
+<span style="font-size:0.8em">An app needs to be able to answer the following questions:</span>
 - <span style="font-size:0.6em">What are the hosts I need to connect to?</span>
 - <span style="font-size:0.6em">How do other services connect with me?</span>
-- What happens if the server I need data form is down?
-- How do I authenticate my requests?
-- Where is the app config?
+- <span style="font-size:0.6em">What happens if the server I need data form is down?</span>
+- <span style="font-size:0.6em">How do I authenticate my requests?</span>
+- <span style="font-size:0.6em">Where is the app config?</span>
 ---
 ### Service discovery
 Difficult to hand-configure service clients in the cloud.
