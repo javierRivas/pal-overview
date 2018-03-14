@@ -16,7 +16,7 @@
 @fa[arrow-down]
 +++
 
-# Gradle
+#### Gradle
 
 Gradle is a build and dependency management system.
 
@@ -29,13 +29,13 @@ Gradle is a build and dependency management system.
 
 +++
 
-# Gradle
+#### Gradle
 - Programable / Extensible
 
 @fa[arrow-down]
 +++
 
-# Gradle
+#### Gradle
 - Fast
 ![mvn-gradle](images/mvn-vs-gradle.png)
 
@@ -43,7 +43,7 @@ Gradle is a build and dependency management system.
 
 +++
 
-# Kotlin
+#### Kotlin
 
 - "New" language developed by JetBrains.
 - Source files compile to Java.
@@ -56,7 +56,7 @@ Gradle is a build and dependency management system.
 
 ---
 
-# Development
+## Development
 
 [12 Factor application](https://www.12factor.net): Set of suggestions for a piece of software intended to work as Saas.
 </br>
@@ -65,7 +65,7 @@ Well documented, based on experience.
 @fa[arrow-down]
 
 +++
-# Development
+## Development
 
 The Java Framework of choice is Spring Boot.
  - Autoconfiguration
@@ -76,7 +76,7 @@ The Java Framework of choice is Spring Boot.
 @[3,12,17] (Controller annotations)
 
 +++
-# Development
+## Development
 
 Database "migrations" using [Flyway](https://www.flyway.com)
 
@@ -87,22 +87,54 @@ Run the migrations file
 flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:databases/migrations clean migrate
 ```
 ---
-# Architecture
+## Architecture
 
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
 
 +++
 ![Image-Absolute](images/packages-current.png)
++++
 - Hard to read
 - Hard to mantain
 - Hard to scale
 - Unclear domain
 - Potential Circular dependencies
-
-
 +++
 ![Image-Absolute](images/packages-refactored.png)
++++
 - Clear naming
 - Clear domain
 - Easy to scale
 - Easy to introduce new people
+
+---
+## Pivotal Cloud Foundry
+
+[Open source Cloud native platform](https://docs.google.com/presentation/d/1LAapkVrJYJS4Mx5FwawAxHIOmWHH_hbihVpYFaNeaoo/)
+
+---
+
+## Managing the Application's connections
+Applications often need to get/receive data from other services.
+An app needs to be able to answer the following questions:
+- What are the hosts I need to connect to?
+- How do other services connect with me?
+- What happens if the server I need data form is down?
+- How do I authenticate my requests?
+- Where is the app config?
+
+### Service discovery
+Difficult to hand-configure service clients in the cloud.
+@fa[arrow-down]
++++
+### Service discovery
+Service discovery pattern where the application will request the Service Registry the host/s for the service it needs to connect to.
+![Service-Discovery](images/service-registry-overview.png)
++++
+### Service Discovery
+Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Service Discovery server and client.
++++?code=src/build-service-discovery.gradle
+@[6,13] (Adding Eureka Service Registry)
++++?code=src/java/application-server-discovery.properties
++++?code=src/java/ServiceDiscoveryApp.java&lang=java
+@[3,15] Annotations
