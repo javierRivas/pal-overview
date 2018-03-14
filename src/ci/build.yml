@@ -1,0 +1,24 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: openjdk
+    tag: '8-jdk'
+
+inputs:
+  - name: demo-project
+  - name: version
+
+outputs:
+  - name: build-output
+
+run:
+  path: bash
+  args:
+  - -exc
+  - |
+    cd demo-project
+    chmod +x gradlew
+    ./gradlew -P version=$(cat ../version/number) build
+    cp build/libs/demo-project-*.jar ../build-output
