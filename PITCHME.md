@@ -14,32 +14,35 @@
 
 @fa[arrow-down]
 +++
-#### Gradle
+### Gradle
 Gradle is a build and dependency management system.
 - Easy to understand
+
+@fa[arrow-down]
 +++?code=src/build.gradle&lang=groovy$title=build.gradle
 @[1,1] (Build Java)
 @[3-9] (Build jar)
 @[11-13] (Repository central)
 @[15-17] (Dependencies)
 +++
-#### Gradle
+### Gradle
 - Programable / Extensible
-</br>@fa[arrow-down]
+
+@fa[arrow-down]
 +++
-#### Gradle
+### Gradle
 - Fast
 ![mvn-gradle](images/mvn-vs-gradle.png)
 
 </br>@fa[arrow-down]
 +++
-#### Kotlin
+ Kotlin
 - "New" language developed by JetBrains.
 - Source files compile to Java.
 - Perfect integration with Java project.
-</br>@fa[arrow-down]
+
+@fa[arrow-down]
 +++?code=src/java/Order.java&lang=java&title=Order class
-</br>@fa[arrow-down]
 +++?code=src/kotlin/Order.kt&lang=kotlin&title=Order class
 ---
 ## Development
@@ -50,15 +53,17 @@ Well documented, based on experience.
 ## Development
 The Java Framework of choice is Spring Boot.
  - Autoconfiguration
- </br>@fa[arrow-down]
+
+@fa[arrow-down]
 +++?code=src/java/SampleApplication.java&lang=java&title=Application Class
 @[3] Spring Application annotation
-+++?code=src/java/controller/SampleController.java
++++?code=src/java/controller/SampleController.java&lang=java&title=SampleController
 @[3,12,17] (Controller annotations)
 +++
 ## Development
 Database "migrations" using [Flyway](https://www.flyway.com)
-+++?code=src/database/V1__create_table_sample.sql&lang=sql&title=Migrations file.
+</br>@fa[arrow-down]
++++?code=src/database/V1__create_table_sample.sql&lang=sql&title=Migrations file
 Run the migrations file
 ```
 flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:databases/migrations clean migrate
@@ -67,8 +72,10 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 ## Architecture
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
 </br>@fa[arrow-down]
+## Architecture
 +++?image=images/packages-current.png&size=contain
 +++
+## Architecture
 - Hard to read
 - Hard to mantain
 - Hard to scale
@@ -76,6 +83,7 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 - Potential Circular dependencies
 +++?image=images/packages-refactored.png&size=contain
 +++
+## Architecture
 - Clear naming
 - Clear domain
 - Easy to scale
@@ -103,10 +111,14 @@ Service discovery pattern where the application will request the Service Registr
 +++
 ### Service Discovery
 Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Service Discovery server and client.
-+++?code=src/build-service-discovery.gradle
+</br>@fa[arrow-down]
+### Service Discovery
++++?code=src/build-service-discovery.gradle&title=Gradle build file
 @[6,13] (Adding Eureka Service Registry)
-+++?code=src/java/application-server-discovery.properties
-+++?code=src/java/ServiceDiscoveryApp.java&lang=java
+### Service Discovery
++++?code=src/java/application-server-discovery.properties&title=service properties
+### Service Discovery
++++?code=src/java/ServiceDiscoveryApp.java&lang=java&title=Main app
 @[3,15] (Eureka annotations)
 ---
 ### Circuit Breaker
@@ -121,12 +133,13 @@ Sometimes the connection to those services is not possible.
 ### Circuit Breaker
 Circuit Breaker Dashboard is based on Hystrix, Netflix’s latency and fault-tolerance library.
 </br>@fa[arrow-down]
-+++?code=src/java/CircuitBreakerDemo.java&lang=java
++++?code=src/java/CircuitBreakerDemo.java&lang=java&title=Service class
 @[14,23] (Hystrix annotations)
 ---
 ### Security
 Recommended way for securing service-to-service communications is OAuth.</br>
 PCF provides an OAuth server that the applications can user for receiving/validating tokens.
+</br>@fa[arrow-down]
 +++
 ### Security
 ![Oauth](images/oauth_auth.png)
@@ -135,6 +148,7 @@ PCF provides an OAuth server that the applications can user for receiving/valida
 PCF provides a config server, based on a given repository.</br>
 Every push to that repository generates a change in the config server.</br>
 Spring cloud config connects the application with the config server.
+</br>@fa[arrow-down]
 +++
 ### Config Server
 ![Config-Server](images/config-server.png)
@@ -149,7 +163,10 @@ compile "io.pivotal.spring.cloud:spring-cloud-services-starter-config-client"
 Adapt the application to function correctly in the cloud
 - Remove reads/write to disk
 - Remove instance specific state
+
+@fa[arrow-down]
 +++
+### Replatforming vs Modernization
 Once in the cloud, bring the technology stack up to date
 - DDD, microservices, security, migrations, etc...
 ---
@@ -158,22 +175,25 @@ Use a Manifest file to describe the application's context and dependencies.
 ```
 cf create-service ...
 ```
-+++?code=src/manifest.yml&lang=yaml
++++?code=src/manifest.yml&lang=yaml&title=Manifest file
 ```
 cf push
 ```
 +++
 ### Using CI
 - Use [Concourse](http://concourse-ci.org) as preferred CI system for microservices architecture.
-- Define flows composed by tasks, resources and jobs
-+++?code=src/ci/build.yml&source=yaml
-+++?code=src/ci/pipeline.yml&source=yaml
+- Define flows composed by tasks, resources and jobs.
+
+</br>@fa[arrow-down]
++++?code=src/ci/build.yml&source=yaml&title=build.yml
++++?code=src/ci/pipeline.yml&source=yaml&title=pipeline.yml
 +++
 ### Using CI
 Push the pipeline config to the CI system
 ```
 fly -t demo-server set-pipeline -p demo-server --load-vars-from ci/variables.yml -c ci/pipeline.yml
 ```
+</br>@fa[arrow-down]
 +++
 ### Using CI
 Enjoy your creation :-)
