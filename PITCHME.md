@@ -130,9 +130,10 @@ Difficult to hand-configure service clients in the cloud.
 ### Service discovery
 Service discovery pattern where the application will request the Service Registry the host/s for the service it needs to connect to.
 ![Service-Discovery](images/service-registry-overview.png)
++++
 ### Service Discovery
 Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Service Discovery server and client.
-+++?code=src/build-service-discovery.properties
++++?code=src/build-service-discovery.gradle
 @[6,13] (Adding Eureka Service Registry)
 +++?code=src/java/application-server-discovery.properties
 +++?code=src/java/ServiceDiscoveryApp.java&lang=java
