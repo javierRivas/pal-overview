@@ -9,12 +9,10 @@
 - Version Control: git
 - Build system: Gradle
 - Language flavour: Kotlin
-
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++
 #### Gradle
 Gradle is a build and dependency management system.
-
 - Easy to understand
 +++?code=src/build.gradle&lang=groovy$title=build.gradle
 @[1,1] (Build Java)
@@ -24,37 +22,32 @@ Gradle is a build and dependency management system.
 +++
 #### Gradle
 - Programable / Extensible
-
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++
 #### Gradle
 - Fast
 ![mvn-gradle](images/mvn-vs-gradle.png)
 
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++
 #### Kotlin
 - "New" language developed by JetBrains.
 - Source files compile to Java.
 - Perfect integration with Java project.
-
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++?code=src/java/Order.java&lang=java&title=Order class
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++?code=src/kotlin/Order.kt&lang=kotlin&title=Order class
 ---
 ## Development
-[12 Factor application](https://www.12factor.net): Set of suggestions for a piece of software intended to work as Saas.
-</br>
+[12 Factor application](https://www.12factor.net): Set of suggestions for a piece of software intended to work as Saas.</br>
 Well documented, based on experience.
-
-@fa[arrow-down]
-
+</br>@fa[arrow-down]
 +++
 ## Development
 The Java Framework of choice is Spring Boot.
  - Autoconfiguration
- @fa[arrow-down]
+ </br>@fa[arrow-down]
 +++?code=src/java/SampleApplication.java&lang=java&title=Application Class
 @[3] Spring Application annotation
 +++?code=src/java/controller/SampleController.java
@@ -70,7 +63,7 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 ---
 ## Architecture
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++?image=images/packages-current.png&size=contain
 +++
 - Hard to read
@@ -99,7 +92,7 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 ---
 ### Service discovery
 Difficult to hand-configure service clients in the cloud.
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++
 ### Service discovery
 Service discovery pattern where the application will request the Service Registry the host/s for the service it needs to connect to.
@@ -116,7 +109,7 @@ Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Servi
 ### Circuit Breaker
 Usually microservices need to connect to different systems (services, DBs, queues...)
 Sometimes the connection to those services is not possible.
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++
 ### Circuit Breaker
 <span style="font-size:0.8em">The Circuit breaker watches for failing calls to the service. If failures reach a certain threshold, it “opens” the circuit and automatically redirects calls to the specified fallback mechanism</span>
@@ -124,7 +117,7 @@ Sometimes the connection to those services is not possible.
 +++
 ### Circuit Breaker
 Circuit Breaker Dashboard is based on Hystrix, Netflix’s latency and fault-tolerance library.
-@fa[arrow-down]
+</br>@fa[arrow-down]
 +++?code=src/java/CircuitBreakerDemo.java&lang=java
 @[14,23] (Hystrix annotations)
 ---
@@ -173,10 +166,14 @@ cf push
 +++?code=src/ci/build.yml&source=yaml
 +++?code=src/ci/pipeline.yml&source=yaml
 +++
+### Using CI
 Push the pipeline config to the CI system
 ```
 fly -t demo-server set-pipeline -p demo-server --load-vars-from ci/variables.yml -c ci/pipeline.yml
 ```
 +++
+### Using CI
 Enjoy your creation :-)
 ![Concourse](images/concourse.png)
+---
+![End](https://media.giphy.com/media/3oFzmqN1xHwaEXGl7q/giphy.gif)
