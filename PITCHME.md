@@ -81,7 +81,6 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 ## Architecture
 
 [Appcontinuum](http://www.appcontinuum.io) Explains how to address the separation in multiple components in an iterative way.
-+++
 +++?image=images/packages-current.png&size=contain
 +++
 - Hard to read
@@ -89,9 +88,7 @@ flyway -url="jdbc:mysql://localhost:3306/my_database" -locations=filesystem:data
 - Hard to scale
 - Unclear domain
 - Potential Circular dependencies
-+++
-</br>
----?image=images/packages-refactored.png&size=contain
++++?image=images/packages-refactored.png&size=contain
 +++
 - Clear naming
 - Clear domain
