@@ -113,9 +113,7 @@ Service Registry for Pivotal Cloud Foundry is based on Eureka, Netflix’s Servi
 </br>@fa[arrow-down]
 +++?code=src/build-service-discovery.gradle&title=Gradle build file
 @[6,13] (Adding Eureka Service Registry)
-### Service Discovery
 +++?code=src/java/application-server-discovery.properties&title=service properties
-### Service Discovery
 +++?code=src/java/ServiceDiscoveryApp.java&lang=java&title=Main app
 @[3,15] (Eureka annotations)
 ---
